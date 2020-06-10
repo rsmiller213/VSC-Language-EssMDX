@@ -1,0 +1,184 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "mdx",
+	"patterns": [
+		{"include": "#properties"},
+		{"include": "#keywords"},
+		{"include": "#comments"},
+		{"include": "#tuples"},
+		{"include": "#sets"},
+		{"include": "#strings"},
+		{"include": "#constants"}
+		
+	],
+	"repository": {
+		"properties":{
+			"patterns": [
+				{
+					"comment": "Cell Properties",
+					"match": "(?i)\\b(cell\\s+properties)(.*)",
+					"captures": {
+						"1": {"name": "support.constant.mdx"},
+						"2": {"name": "support.other.mdx"}
+					}
+				},
+				{
+					"comment": "Dimension Properties",
+					"match": "(?i)\\b(dimension\\s+properties)(.*)\\b",
+					"captures": {
+						"1": {"name": "support.constant.mdx"},
+						"2": {"name": "support.other.mdx"}
+					}
+				}
+			]
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"comment": "Function Keywords",
+					"name": "keyword.control.mdx",
+					"match": "(?i)\\b(absolute|actionparameterset|addcalculatedmembers|after|aggregate|all|allmembers|ancestor|ancestors|asc|ascendants|average|axis|basc|bdesc|before|before_and_after|bottomcount|bottompercent|bottomsum|by|cache|calculationcurrentpass|calculationpassvalue|cellformulasetlist|chapters|children|closingperiod|coalesceempty|column|columns|correlation|count|cousin|covariance|covariancen|createpropertyset|createvirtualdimension|crossjoin|current|currentcube|currentmember|default_member|defaultmember|desc|descendants|description|dimension|dimensions|distinct|distinctcount|drilldownlevel|drilldownlevelbottom|drilldownleveltop|drilldownmember|drilldownmemberbottom|drilldownmembertop|drilluplevel|drillupmember|empty|error|except|excludeempty|extract|filter|firstchild|firstsibling|for|freeze|generate|group|grouping|head|hidden|hierarchize|hierarchy|ignore|iif|includeempty|index|intersect|isancestor|isempty|isgeneration|isleaf|issibling|item|lag|lastchild|lastperiods|lastsibling|lead|leaves|level|levels|linkmember|linregintercept|linregpoint|linregr2|linregslope|linregvariance|lookupcube|max|measure|median|members|membertostr|min|mtd|name|nametoset|nest|nextmember|no_allocation|no_properties|non|nonemptycrossjoin|not_related_to_facts|openingperiod|pages|parallelperiod|parent|pass|periodstodate|post|predict|prevmember|properties|property|qtd|rank|recursive|relative|rollupchildren|root|rows|sections|self|self_and_after|self_and_before|self_before_after|settoarray|settostr|solve_order|sort|stddev|stddevp|stdev|stdevp|storage|stripcalculatedmembers|strtomember|strtoset|strtotuple|strtoval|strtovalue|subset|sum|tail|this|toggledrillstate|topcount|toppercent|topsum|totals|tree|tupletostr|type|union|unique|uniquename|use|use_equal_allocation|use_weighted_allocation|use_weighted_increment|username|validmeasure|value|var|variance|variancep|varp|visual|visualtotals|wtd|ytd|generations|isuda|tuplerange)\\b"
+				},
+				{
+					"comment": "Action Keywords",
+					"name": "keyword.other.mdx",
+					"match": "(?i)\\b(action|alter|calculate|calculation|calculations|call|case|when|then|else|cell|clear|create|cube|drillthrough|drop|end|existing|global|if|on|refresh|scope|session|subcube|update|nonempty|nonemptyblock)\\b"
+				},
+				{
+					"comment": "Operator Keywords",
+					"name": "keyword.other.mdx",
+					"match": "(?i)\\b(and|is|not|or|xor)\\b"
+				},
+				{
+					"comment": "Type Keywords",
+					"name": "keyword.other.mdx",
+					"match": "(?i)\\b(as|member|set)\\b"
+				},
+				{
+					"comment": "Class Keywords",
+					"name": "keyword.other.mdx",
+					"match": "(?i)\\b(with|select|from|where)\\b"
+				},
+				{
+					"comment": "Language Keywords",
+					"name": "keyword.other.mdx",
+					"match": "(?i)\\b(false|null|true)\\b"
+				},
+				{
+					"comment": "String Keywords",
+					"name": "keyword.other.mdx",
+					"match": "(?i)\\b(format_string)\\b"
+				}	
+			]
+		},
+		"strings": {
+			"patterns": [
+				{
+					"name": "string.quoted.double.mdx",
+					"begin": "\"",
+					"end": "\"",
+					"beginCaptures": {
+					  "0": {"name": "keyword.other.mdx"}
+					},
+					"endCaptures": {
+					  "0": {"name": "keyword.other.mdx"}
+					}
+				},
+				{
+					"name": "string.quoted.single.mdx",
+					"begin": "'",
+					"end": "'",
+					"beginCaptures": {
+					  "0": {"name": "keyword.other.mdx"}
+					},
+					"endCaptures": {
+					  "0": {"name": "keyword.other.mdx"}
+					}
+				}
+			]
+		},
+		"comments":{
+			"patterns": [
+				{
+					"name": "comment.line.mdx",
+					"begin": "--",
+					"end": "\\n",
+					"beginCaptures": {
+					  "0": {"name": "comment.line.mdx"}
+					},
+					"endCaptures": {
+					  "0": {"name": "comment.line.mdx"}
+					}
+				},
+				{
+					"name": "comment.line.mdx",
+					"begin": "//",
+					"end": "\\n",
+					"beginCaptures": {
+					  "0": {"name": "comment.line.mdx"}
+					},
+					"endCaptures": {
+					  "0": {"name": "comment.line.mdx"}
+					}
+				},
+				{
+					"name": "comment.block.mdx",
+					"begin": "/\\*",
+					"end": "\\*/",
+					"beginCaptures": {
+					  "0": {"name": "comment.block.mdx"}
+					},
+					"endCaptures": {
+					  "0": {"name": "comment.block.mdx"}
+					}
+				}
+			]
+		},
+		"constants":{
+			"patterns":[
+				{
+					"comment": "General Numeric + #MISSING",
+					"name": "constant.numeric.mdx",
+					"match": "\\s*(?<=[^$])((0(x|X)[0-9a-fA-F]+)|([0-9]+(\\.[0-9]+)?))\\b|(?i)MISSING"
+				},
+				{
+					"comment": "Operators",
+					"name": "support.type.property-name",
+					"match": "->|=|!=|==|<|>|\\+|-|\\/|\\*"
+				}
+			]
+		},
+		"tuples":{
+			"patterns":[
+				{
+					"comment": "Match Tuples",
+					"match": "(\\.?\\&?\\[)([^\\]]*)(\\])",
+					"captures": {
+						"1": { "name": "constant.character.mdx" },
+						"2": { "name": "string.quoted.other.brackets.essmdx" },
+						"3": { "name": "constant.character.essmdx" }
+					}
+				}
+			]
+		},
+		"sets":{
+			"patterns":[
+				{
+					"begin": "\\{",
+					"end": "\\}",
+					"beginCaptures": {
+					  "0": {"name": "constant.character.essmdx"}
+					},
+					"endCaptures": {
+					  "0": {"name": "constant.character.essmdx"}
+					},
+					"patterns": [
+						{ "include": "#tuples"},
+						{ "include": "#keywords"}
+					]
+				}
+			]
+		}
+	},
+	"scopeName": "source.mdx"
+}

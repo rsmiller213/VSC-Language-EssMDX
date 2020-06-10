@@ -1,0 +1,25 @@
+{
+    "name": "EssMDX",
+    "displayName": "EssMdx",
+    "description": "MDX Support for Essbase Calcs",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.45.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "mdx",
+            "aliases": ["mdx", "mdx"],
+            "extensions": [".mdx"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "mdx",
+            "scopeName": "source.mdx",
+            "path": "./syntaxes/mdx.tmLanguage.json"
+        }]
+    }
+}
